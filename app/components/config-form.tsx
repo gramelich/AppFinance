@@ -16,8 +16,8 @@ type ConfigFormProps = {
 
 export function ConfigForm({ configType }: ConfigFormProps) {
   const [config, setConfig] = useState<AppConfig>({
-    supabase_url: '',
-    supabase_api_key: '',
+    supabase_url: 'https://nwthziuaddvhbkxuxhtb.supabase.co',
+    supabase_api_key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53dGh6aXVhZGR2aGJreHV4aHRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5NTc1MzIsImV4cCI6MjA0NzUzMzUzMn0.mGUwY5xqF6muUM5CA1sA872XUuYdlol9FezBOF88drY',
     telegram_bot_token: '',
     telegram_chat_id: '',
     whatsapp_token: '',
