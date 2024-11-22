@@ -1,7 +1,8 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { AuthProvider } from '@/contexts/AuthContext'
 import { Sidebar } from './components/sidebar'
+import { AdminAuthProvider } from '@/contexts/AdminAuthContext'
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,14 +19,15 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <AuthProvider>
-          <div className="flex h-screen">
+        <AdminAuthProvider>
+          <div className="flex flex-col md:flex-row min-h-screen">
             <Sidebar />
-            <main className="flex-1 overflow-y-auto p-8">
+            <main className="flex-1 p-4 md:p-8 overflow-y-auto">
               {children}
             </main>
           </div>
-        </AuthProvider>
+          <Toaster />
+        </AdminAuthProvider>
       </body>
     </html>
   )

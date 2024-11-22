@@ -6,7 +6,7 @@ type BalanceProps = {
 
 export function Balance({ balance }: BalanceProps) {
   return (
-    <Card>
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>Saldo Atual</CardTitle>
       </CardHeader>

@@ -20,24 +20,35 @@ export function TransactionList({ transactions, onDeleteTransaction, onMarkAsPai
         ) : (
           <ul className="space-y-2">
             {transactions.map((transaction) => (
-              <li key={transaction.id} className="flex justify-between items-center bg-white p-3 rounded shadow">
-                <div>
-                  <span className="font-medium">{transaction.description}</span>
-                  <span className={`ml-2 ${transaction.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
+              <li key={transaction.id} className="flex flex-col bg-white p-3 rounded shadow">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <span className="font-medium">{transaction.description}</span>
+                    <span className="ml-2 text-sm text-gray-500">({transaction.supplierName})</span>
+                  </div>
+                  <span className={`font-bold ${transaction.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
                     R$ {transaction.amount.toFixed(2)}
                   </span>
-                  <span className="ml-2 text-sm text-gray-500">{transaction.date}</span>
-                  {transaction.dueDate && (
-                    <span className="ml-2 text-sm text-gray-500">Vence em: {transaction.dueDate}</span>
+                </div>
+                <div className="text-sm text-gray-500">
+                  <p>Data: {transaction.date}</p>
+                  <p>Categoria: {transaction.category}</p>
+                  <p>Forma de Pagamento: {transaction.paymentMethod}</p>
+                  {transaction.dueDate && <p>Vence em: {transaction.dueDate}</p>}
+                  {transaction.barcode && <p>Código de Barras: {transaction.barcode}</p>}
+                  {transaction.invoiceNumber && <p>Nota Fiscal: {transaction.invoiceNumber}</p>}
+                  {transaction.fileUrl && (
+                    <p>
+                      Arquivo: <a href={transaction.fileUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Ver arquivo</a>
+                    </p>
                   )}
-                  <span className="ml-2 text-sm text-gray-500">{transaction.category}</span>
                   {transaction.type === 'bill' && (
-                    <span className={`ml-2 text-sm ${transaction.isPaid ? 'text-green-600' : 'text-red-600'}`}>
+                    <p className={transaction.isPaid ? 'text-green-600' : 'text-red-600'}>
                       {transaction.isPaid ? 'Pago' : 'Pendente'}
-                    </span>
+                    </p>
                   )}
                 </div>
-                <div className="space-x-2">
+                <div className="mt-2 space-x-2">
                   {transaction.type === 'bill' && !transaction.isPaid && (
                     <Button size="sm" onClick={() => onMarkAsPaid(transaction.id)}>
                       Marcar como Pago

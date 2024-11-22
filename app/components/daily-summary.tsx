@@ -12,7 +12,7 @@ export function DailySummary({ transactions }: DailySummaryProps) {
   ).sort((a, b) => (a.dueDate || '').localeCompare(b.dueDate || ''))
 
   return (
-    <Card>
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>Resumo Diário</CardTitle>
       </CardHeader>

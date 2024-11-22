@@ -7,7 +7,7 @@ type RecentTransactionsProps = {
 
 export function RecentTransactions({ transactions }: RecentTransactionsProps) {
   return (
-    <Card>
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>Transações Recentes</CardTitle>
       </CardHeader>
