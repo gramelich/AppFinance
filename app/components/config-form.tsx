@@ -23,9 +23,9 @@ export function ConfigForm({ configType }: ConfigFormProps) {
     whatsapp_token: '',
     whatsapp_phone_number_id: '',
     whatsapp_recipient: '',
-    message_template: '',
-    separate_barcode: false,
-    admin_password: '' // Added admin_password to the state
+    message_template: 'Teste',
+    separate_barcode: true,
+    admin_password: 'admin' // Added admin_password to the state
   })
 
   useEffect(() => {
